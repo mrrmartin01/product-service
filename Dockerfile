@@ -1,10 +1,16 @@
 FROM node:22
 
-WORKDIR /usr/src/app
+RUN npm install -g bun
 
-COPY package.json ./
-COPY yarn.lock ./
+WORKDIR /usr/src/products-svc
 
-RUN yarn install
+COPY package.json bun.lock tsconfig*.json ./
+# COPY prisma ./prisma/
+
+RUN bun install
 
 COPY . .
+
+ENV NODE_ENV=development
+
+CMD ["bun", "start:dev"]
