@@ -5,7 +5,6 @@ RUN npm install -g bun
 WORKDIR /usr/src/products-svc
 
 COPY package.json bun.lock tsconfig*.json ./
-# COPY prisma ./prisma/
 
 RUN bun install
 
